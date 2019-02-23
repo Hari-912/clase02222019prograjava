@@ -20,7 +20,14 @@ public class StoreServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) 
         {
-            /* TODO output your page here. You may use following sample code. */
+            String strName = request.getParameter("name");
+            String strPrice = request.getParameter("price");
+            String strQuantity = request.getParameter("quantity");
+            
+            int iPrice = Integer.parseInt(strPrice);
+            int iQuantity = Integer.parseInt(strQuantity);
+            int iCost = iPrice * iQuantity;
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -28,6 +35,10 @@ public class StoreServlet extends HttpServlet
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet StoreServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>name:"+strName+"</h1>");
+            out.println("<h1>price:"+strPrice+"</h1>");
+            out.println("<h1>quantity:"+strQuantity+"</h1>");
+            out.println("<h1>cost:"+iCost+"</h1>");
             out.println("</body>");
             out.println("</html>");
         }
